@@ -10,6 +10,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import me.dahei.myapplication.R
+import me.dahei.myapplication.constant.Constants
 
 class DisplayDialogFragment : DialogFragment() {
 
@@ -26,22 +27,25 @@ class DisplayDialogFragment : DialogFragment() {
         val view = inflater.inflate(R.layout.fragment_display, container)
 
         val bundle = arguments
-        val title = bundle?.getString("fun_title")
+        val title = bundle?.getString(Constants.FUN_TITLE)
         view.findViewById<TextView>(R.id.textTitle).text = title
 
-        val content = bundle?.getString("fun_content")
+        val content = bundle?.getString(Constants.FUN_CONTENT)
         view.findViewById<TextView>(R.id.textContent).text = content
 
-        val outcome = bundle?.getString("fun_outcome")
         val btnOutcome = view.findViewById<TextView>(R.id.textOutcome)
-        btnOutcome.text = outcome
         btnOutcome.visibility = View.INVISIBLE
-
         val btnExe = view.findViewById<Button>(R.id.btnExe)
         btnExe.setOnClickListener{
-                Log.d(TAG,"exe")
-                btnOutcome.visibility = View.VISIBLE
+            Log.d(TAG,"exe")
+            btnOutcome.visibility = View.VISIBLE
         }
+
+        val outcome = bundle?.getString(Constants.FUN_OUTCOME)
+        btnOutcome.text = outcome
+
+
+
         return view
     }
 }

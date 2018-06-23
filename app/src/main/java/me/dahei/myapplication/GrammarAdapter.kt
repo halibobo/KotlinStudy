@@ -35,9 +35,9 @@ class GrammarAdapter(val context:Context,private val myDataset: ArrayList<Kotlin
 
     override fun getItemCount() = myDataset.size
 
+    private val bundle = Bundle()
     private fun exeFun(title: String, content: String, outCome: String) {
         Log.d("exeFun", "exeFun")
-        val bundle = Bundle()
         val dialogFragment = DisplayDialogFragment()
         bundle.putString(Constants.FUN_TITLE, title)
         bundle.putString(Constants.FUN_CONTENT, content)

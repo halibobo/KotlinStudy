@@ -6,14 +6,12 @@ import butterknife.OnClick
 import me.dahei.myapplication.BaseActivity
 import me.dahei.myapplication.GrammarAdapter
 import me.dahei.myapplication.R
-import me.dahei.myapplication.constant.Constants
 import me.dahei.myapplication.data.KotlinItem
-import me.dahei.myapplication.display.DisplayDialogFragment
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 
 class GrammarActivity : BaseActivity() {
 
-    private val bundle:Bundle = Bundle()
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     private val recyclerView: RecyclerView by lazy {
@@ -36,7 +34,37 @@ class GrammarActivity : BaseActivity() {
                     "     */\n" +
                     "    private fun sum(a: Int, b: Int, c: Int) = a + b + c\n",
                     "sum(2, 3, 4)",
-                    sum(2, 3, 4).toString())
+                    sum(2, 3, 4).toString()),
+            KotlinItem("\n" +
+                    "    /**\n" +
+                    "     * 使用字符串模版\n" +
+                    "     */\n" +
+                    "    private fun connectStr():String {\n" +
+                    "        var a = 1\n" +
+                    "        val s1 = \"a is \$a\"\n" +
+                    "        a = 2\n" +
+                    "        val s2 = \"\${s1.replace('is', 'was')}, but now is \$a\"\n" +
+                    "        return s2\n" +
+                    "    }",
+                    "connectStr()",
+                    connectStr()),
+            KotlinItem("\n" +
+                    "    /**\n" +
+                    "     * 使用 if 作为表达式:\n" +
+                    "     */\n" +
+                    "    fun maxOf(a: Int, b: Int) = if (a > b) a else b",
+                    "maxOf(123, 43)",
+                    maxOf(123, 43).toString()),
+            KotlinItem("\n" +
+                    "    /**\n" +
+                    "     * 当某个变量的值可以为 null 的时候，必须在声明处的类型后添加 ? 来标识该引用可为空。\n" +
+                    "     * 如果 str 的内容不是数字返回 null：\n" +
+                    "     */\n" +
+                    "    private fun parseInt(str: String): Int? {\n" +
+                    "        return str.toInt()\n" +
+                    "    }",
+                    "parseInt('12332'), parseInt(\"\")",
+                    "${testParseInt("12332")}, ${testParseInt("")}")
     )
 
     override fun getLayoutId(): Int {
@@ -59,16 +87,6 @@ class GrammarActivity : BaseActivity() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
-    }
-
-    private fun exeFun(title:String,content:String,outCome:String) {
-        val dialogFragment = DisplayDialogFragment()
-        bundle.putString(Constants.FUN_TITLE, title)
-        bundle.putString(Constants.FUN_CONTENT, content)
-        bundle.putString(Constants.FUN_OUTCOME, outCome)
-
-        dialogFragment.arguments = bundle
-        dialogFragment.show(supportFragmentManager, "alertDialog")
     }
 
     /**
@@ -96,6 +114,35 @@ class GrammarActivity : BaseActivity() {
      */
     private fun printSum(a: String, b: String) {
         println("sum of $a and $b is ${a + b}")
+    }
+
+    /**
+     * 使用字符串模版
+     */
+    private fun connectStr():String {
+        var a = 1
+        val s1 = "a is $a"
+        a = 2
+        val s2 = "${s1.replace("is", "was")}, but now is $a"
+        return s2
+    }
+
+    /**
+     * 使用 if 作为表达式:
+     */
+    private fun maxOf(a: Int, b: Int) = if (a > b) a else b
+
+
+    /**
+     * 当某个变量的值可以为 null 的时候，必须在声明处的类型后添加 ? 来标识该引用可为空。
+     * 如果 str 的内容不是数字返回 null：
+     */
+    private fun testParseInt(str: String): Int? {
+        if (TextUtils.isEmpty(str)) {
+            return null
+        }else {
+            return Integer.parseInt(str)
+        }
     }
 }
 
