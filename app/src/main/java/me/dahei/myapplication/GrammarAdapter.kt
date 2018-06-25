@@ -10,10 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.dahei.myapplication.constant.Constants
-import me.dahei.myapplication.data.KotlinNote
+import me.dahei.myapplication.data.NoteItem
 import me.dahei.myapplication.display.DisplayDialogFragment
 
-class GrammarAdapter(private val context : Context,private val myDataSet: ArrayList<KotlinNote>) :RecyclerView.Adapter<GrammarAdapter.ViewHolder>() {
+class GrammarAdapter(private val context : Context,private val myDataSet: ArrayList<NoteItem>) :RecyclerView.Adapter<GrammarAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ViewHolder {
         // create a new view

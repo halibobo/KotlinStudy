@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import butterknife.ButterKnife
 import butterknife.OnClick
+import me.dahei.myapplication.basic.BasicGrammar
 import me.dahei.myapplication.basic.GrammarActivity
+import me.dahei.myapplication.constant.Constants
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +20,9 @@ class MainActivity : AppCompatActivity() {
 
     @OnClick(R.id.grammar)
     fun gotToGrammarActivity() {
-        startActivity(Intent(this,GrammarActivity::class.java))
+        val kotlinNote = BasicGrammar().note()
+        var intent = Intent(this,GrammarActivity::class.java)
+        intent.putExtra(Constants.INTENT_GRAMMAER, kotlinNote)
+        startActivity(intent)
     }
 }

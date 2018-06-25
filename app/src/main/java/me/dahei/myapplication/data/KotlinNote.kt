@@ -2,17 +2,15 @@ package me.dahei.myapplication.data
 
 import java.io.Serializable
 
-class KotlinNote : Serializable{
-
-    var title: String = ""
-    var content: String = ""
-    var outcome: String = ""
+class KotlinNote : Serializable {
+    var notes: ArrayList<NoteItem> = ArrayList()
+    var name: String? = ""
 
     constructor()
-
-    constructor(title: String, content: String, outcome: String) {
-        this.title = title
-        this.content = content
-        this.outcome = outcome
+    constructor(kotlinNote: ArrayList<NoteItem>, name: String?) {
+        this.notes = kotlinNote
+        this.name = name
     }
+
+
 }

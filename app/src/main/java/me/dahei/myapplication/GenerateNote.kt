@@ -4,7 +4,7 @@ import me.dahei.myapplication.data.KotlinNote
 
 interface GenerateNote {
 
-    fun note(): ArrayList<KotlinNote>
+    fun note(): KotlinNote
 
 
 }
