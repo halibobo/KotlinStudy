@@ -1,6 +1,8 @@
 package me.dahei.myapplication.data
 
-class KotlinItem {
+import java.io.Serializable
+
+class KotlinNote : Serializable{
 
     var title: String = ""
     var content: String = ""

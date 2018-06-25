@@ -6,7 +6,7 @@ import butterknife.OnClick
 import me.dahei.myapplication.BaseActivity
 import me.dahei.myapplication.GrammarAdapter
 import me.dahei.myapplication.R
-import me.dahei.myapplication.data.KotlinItem
+import me.dahei.myapplication.data.KotlinNote
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 
@@ -18,8 +18,8 @@ class GrammarActivity : BaseActivity() {
         findViewById<RecyclerView>(R.id.listView)
     }
 
-    private val mContainer = arrayListOf<KotlinItem>(
-            KotlinItem("\n" +
+    private val mContainer = arrayListOf<KotlinNote>(
+            KotlinNote("\n" +
                     "    /**\n" +
                     "     * 带有两个 Int 参数、返回 Int 的函数：\n" +
                     "     */\n" +
@@ -28,14 +28,14 @@ class GrammarActivity : BaseActivity() {
                     "    }",
                     "sum(2, 3)",
                     sum(2, 3).toString()),
-            KotlinItem("\n" +
+            KotlinNote("\n" +
                     "    /**\n" +
                     "     * 将表达式作为函数体、返回值类型自动推断的函数\n" +
                     "     */\n" +
                     "    private fun sum(a: Int, b: Int, c: Int) = a + b + c\n",
                     "sum(2, 3, 4)",
                     sum(2, 3, 4).toString()),
-            KotlinItem("\n" +
+            KotlinNote("\n" +
                     "    /**\n" +
                     "     * 使用字符串模版\n" +
                     "     */\n" +
@@ -48,14 +48,14 @@ class GrammarActivity : BaseActivity() {
                     "    }",
                     "connectStr()",
                     connectStr()),
-            KotlinItem("\n" +
+            KotlinNote("\n" +
                     "    /**\n" +
                     "     * 使用 if 作为表达式:\n" +
                     "     */\n" +
                     "    fun maxOf(a: Int, b: Int) = if (a > b) a else b",
                     "maxOf(123, 43)",
                     maxOf(123, 43).toString()),
-            KotlinItem("\n" +
+            KotlinNote("\n" +
                     "    /**\n" +
                     "     * 当某个变量的值可以为 null 的时候，必须在声明处的类型后添加 ? 来标识该引用可为空。\n" +
                     "     * 如果 str 的内容不是数字返回 null：\n" +

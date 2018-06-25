@@ -10,10 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.dahei.myapplication.constant.Constants
-import me.dahei.myapplication.data.KotlinItem
+import me.dahei.myapplication.data.KotlinNote
 import me.dahei.myapplication.display.DisplayDialogFragment
 
-class GrammarAdapter(val context:Context,private val myDataset: ArrayList<KotlinItem>) :RecyclerView.Adapter<GrammarAdapter.ViewHolder>() {
+class GrammarAdapter(private val context : Context,private val myDataSet: ArrayList<KotlinNote>) :RecyclerView.Adapter<GrammarAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ViewHolder {
         // create a new view
@@ -24,16 +24,16 @@ class GrammarAdapter(val context:Context,private val myDataset: ArrayList<Kotlin
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val textView = holder.textView.findViewById<TextView>(R.id.textTitle)
-        textView.text = myDataset[position].title
+        textView.text = myDataSet[position].title
         holder.textView.setOnClickListener {
             exeFun(
-                myDataset[position].title,
-                myDataset[position].content,
-                myDataset[position].outcome
+                    myDataSet[position].title,
+                    myDataSet[position].content,
+                    myDataSet[position].outcome
         ) }
     }
 
-    override fun getItemCount() = myDataset.size
+    override fun getItemCount() = myDataSet.size
 
     private val bundle = Bundle()
     private fun exeFun(title: String, content: String, outCome: String) {
